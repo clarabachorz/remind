@@ -637,13 +637,13 @@ p37_specFeDemTarget("feels","bf","standard")    = sm_eps / (sm_TWa_2_MWh/sm_giga
 p37_specFeDemTarget("fehos","bf","standard")    = sm_eps / (sm_TWa_2_MWh/sm_giga_2_non);    !! Source: DUMMY
 
 !! carbon capture FE demand is given per tCO2 and converted to per tC after that
-p37_specFeDemTarget("feels","bfcc","standard")    = 0.11 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! Source: Tsupari2013
-p37_specFeDemTarget("fegas","bfcc","standard")    = 0.92 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! Source: Tsupari2013 / Yun2021
+p37_specFeDemTarget("feels","bfcc","standard")    = 0.8 * 0.11 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! Source: Tsupari2013
+p37_specFeDemTarget("fegas","bfcc","standard")    = 0.8 * 0.92 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! Source: Tsupari2013 / Yun2021
 
 !! World Steel Factsheet says no additional equipment needed --> very cheap and no energy demand
 !! IEA Steel Roadmap Fig 2.11 also shows very little additional fuel cost
-p37_specFeDemTarget("feels","idrcc","ng")         = 0.11 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! Copy from bfcc
-p37_specFeDemTarget("fegas","idrcc","ng")         = 0.92 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! Copy from bfcc, but seems to be quite universal. See e.g. Rochelle 2016, who has slightly lower values.
+p37_specFeDemTarget("feels","idrcc","ng")         = 0.8 * 0.11 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! Copy from bfcc
+p37_specFeDemTarget("fegas","idrcc","ng")         = 0.8 * 0.92 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! Copy from bfcc, but seems to be quite universal. See e.g. Rochelle 2016, who has slightly lower values.
 $endif.cm_subsec_model_steel
 
 *** --------------------------------
@@ -691,10 +691,10 @@ s37_shareHistFeDemPenalty = 0.6;
 p37_captureRate(all_te) = 0.;
 p37_selfCaptureRate(all_te) = 0.;
 $ifthen.cm_subsec_model_steel "%cm_subsec_model_steel%" == "processes"
-p37_captureRate("bfcc")  = 0.73; !! Source: Witecka 2023, Figure 18
-p37_captureRate("idrcc") = 0.85; !! Source: IEA Steel Roadmap Fig. 2.11
-p37_selfCaptureRate("bfcc")  = 0.9;
-p37_selfCaptureRate("idrcc") = 0.9;
+p37_captureRate("bfcc")  = 0.78; !! Source: Witecka 2023, Figure 18
+p37_captureRate("idrcc") = 0.90; !! Source: IEA Steel Roadmap Fig. 2.11
+p37_selfCaptureRate("bfcc")  = 0.95;
+p37_selfCaptureRate("idrcc") = 0.95;
 $endif.cm_subsec_model_steel
 
 *** --------------------------------
