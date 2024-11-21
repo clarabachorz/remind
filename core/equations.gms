@@ -859,6 +859,16 @@ q_balCCUvsCCS(t,regi) ..
   + v_co2capturevalve(t,regi)
 ;
 
+q_co2CCS_noSteel(t,regi) ..
+    vm_co2CCS_noSteel(t,regi)
+  =e=
+    vm_co2CCS(t,regi,"cco2","ico2","ccsinje","1")
+  - sum((secInd37_tePrc("steel",tePrc),
+         tePrc2teCCPrc(tePrc,opmoPrc,teCCPrc,opmoCCPrc)),
+      vm_outflowPrc(t,regi,teCCPrc,opmoCCPrc)
+    )
+;
+
 ***---------------------------------------------------------------------------
 *' Definition of the CCS transformation chain:
 ***---------------------------------------------------------------------------

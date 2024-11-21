@@ -395,6 +395,7 @@ vm_costTeCapital(ttot,all_regi,all_te)               "investment costs"
 vm_costAddTeInv(tall,all_regi,all_te,emi_sectors)    "additional sector-specific investment cost of demand-side transformation"
 
 vm_co2CCS(ttot,all_regi,all_enty,all_enty,all_te,rlf)       "all different ccs. [GtC/a]"
+vm_co2CCS_noSteel(ttot,all_regi)                            "TODO: co2ccs without steel?"
 
 v_co2capture(ttot,all_regi,all_enty,all_enty,all_te,rlf)   "all captured CO2. [GtC/a]"
 v_co2capturevalve(ttot,all_regi)                            "CO2 emitted right after capture [GtC/a] (in q_balCCUvsCCS to account for different lifetimes of capture and CCU/CCS te and capacities)"
@@ -516,6 +517,7 @@ q_emiCdrAll(ttot,all_regi)                           "summing over all CDR emiss
 
 q_balcapture(ttot,all_regi,all_enty,all_enty,all_te)  "balance equation for carbon capture"
 q_balCCUvsCCS(ttot,all_regi)                          "balance equation for captured carbon to CCU or CCS or valve"
+q_co2CCS_noSteel(ttot,all_regi)                       "TODO"
 
 q_limitSo2(ttot,all_regi)                             "prevent SO2 from rising again after 2050"
 
