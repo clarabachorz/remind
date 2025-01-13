@@ -470,7 +470,7 @@ q37_limitCapMatHist(t,regi,tePrc)$(t.val le 2020) ..
     sum(tePrc2opmoPrc(tePrc,opmoPrc),
       vm_outflowPrc(t,regi,tePrc,opmoPrc)
     )
-    =e=
+    =l=
     sum(teMat2rlf(tePrc,rlf),
       vm_capFac(t,regi,tePrc)
     * vm_cap(t,regi,tePrc,rlf)
