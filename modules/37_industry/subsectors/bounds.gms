@@ -154,19 +154,22 @@ v37_shareWithCC.up(t,regi,tePrc,opmoPrc) = 1.;
 
 !! Add new capacity announcement constraints from the global steel plant tracker
 !! If not written out explicitely, the capacity additions are 0
-vm_deltaCap.lo("2025","CHA","bof","1") = 0.0317;
-vm_deltaCap.lo("2030","CHA","bof","1") = 0.0039;
-vm_deltaCap.lo("2035","CHA","bof","1") = 0.;
+if(c_addBOFDeltaCap eq 1,
+  vm_deltaCap.lo("2025","CHA","bof","1") = 0.0317;
+  vm_deltaCap.lo("2030","CHA","bof","1") = 0.0039;
+  vm_deltaCap.lo("2035","CHA","bof","1") = 0.;
 
-vm_deltaCap.lo("2025","IND","bof","1") = 0.0084;
-vm_deltaCap.lo("2030","IND","bof","1") = 0.0184;
-vm_deltaCap.lo("2035","IND","bof","1") = 0.0009;
+  vm_deltaCap.lo("2025","IND","bof","1") = 0.0084;
+  vm_deltaCap.lo("2030","IND","bof","1") = 0.0184;
+  vm_deltaCap.lo("2035","IND","bof","1") = 0.0009;
 
-vm_deltaCap.lo("2025","OAS","bof","1") = 0.0130;
-vm_deltaCap.lo("2030","OAS","bof","1") = 0.0004;
-vm_deltaCap.lo("2035","OAS","bof","1") = 0.0014;
+  vm_deltaCap.lo("2025","OAS","bof","1") = 0.0130;
+  vm_deltaCap.lo("2030","OAS","bof","1") = 0.0004;
+  vm_deltaCap.lo("2035","OAS","bof","1") = 0.0014;
 
-vm_deltaCap.lo("2030","REF","bof","1") = 0.0001;
+  vm_deltaCap.lo("2030","REF","bof","1") = 0.0001;
+);
+
 
 $endif.cm_subsec_model_steel
 

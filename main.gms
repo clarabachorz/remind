@@ -1184,6 +1184,11 @@ parameter
 ;
   cm_LearningSpillover = 1; !! def 1 = Learningspillover activated (set to 0 to deactivate)
 *'
+parameter
+  c_addBOFDeltaCap      "Activate or deactivate BOF capacity bounds from 2020"
+;
+  c_addBOFDeltaCap = 0; !! def 0 = no BOF capacity bounds. 1 = switch on capacity bounds
+*'
 *' * if Learningspillover is deactivated, foreign capacity is set to the level of 2020 in technology learning.
 *' * This means that in the model, each region's learning depends on its OWN additional capacity investment after 2020 in comparison to the GLOBAL cumulative capacity until 2020,
 *' * so for small regions learning is very slow. This is a very pessimistic interpretation of 'no learning spillovers',
