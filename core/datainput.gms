@@ -255,6 +255,8 @@ $endif.cm_incolearn
 
 $if not "%cm_inco0Factor%" == "off"     parameter p_new_inco0Factor(all_te) / %cm_inco0Factor% /;
 $if not "%cm_inco0Factor%" == "off"               fm_dataglob("inco0",te)$p_new_inco0Factor(te) = p_new_inco0Factor(te) * fm_dataglob("inco0",te);
+$if not "%cm_lifetime%" == "off"     parameter p_new_lifetime(all_te) / %cm_lifetime% /;
+$if not "%cm_lifetime%" == "off"               fm_dataglob("lifetime",te)$p_new_lifetime(te) = p_new_lifetime(te);
 $if not "%cm_learnRate%" == "off"       parameter p_new_learnRate(all_te) / %cm_learnRate% /;
 $if not "%cm_learnRate%" == "off"                 fm_dataglob("learn",te)$p_new_learnRate(te) = p_new_learnRate(te);
 $if not "%cm_inco0RegiFactor%" == "off" parameter p_new_inco0RegiFactor(all_te) / %cm_inco0RegiFactor% /;
