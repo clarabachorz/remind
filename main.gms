@@ -1189,6 +1189,16 @@ parameter
 ;
   c_addBOFDeltaCap = 0; !! def 0 = no BOF capacity bounds. 1 = switch on capacity bounds
 *'
+parameter
+  c_addSteelGovTargets      "Activate or deactivate reaching steel government targets for 2030 (OAS and IND only)"
+;
+  c_addSteelGovTargets = 0; !! def 0 = no government target as lower bound. 1 = set gov target as lower bound
+*'
+parameter
+  c_limitBioSolidsCHA      "Limit solid biomass in China to 2EJ for all times"
+;
+  c_limitBioSolidsCHA = 0;  !! def 0 = no limit, 1 = 2EJ limit
+*'  
 *' * if Learningspillover is deactivated, foreign capacity is set to the level of 2020 in technology learning.
 *' * This means that in the model, each region's learning depends on its OWN additional capacity investment after 2020 in comparison to the GLOBAL cumulative capacity until 2020,
 *' * so for small regions learning is very slow. This is a very pessimistic interpretation of 'no learning spillovers',
