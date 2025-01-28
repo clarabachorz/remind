@@ -518,7 +518,7 @@ display vm_emiFgas.L;
 *** Upper limit of 2EJ on bio solids in China.
 ***----------------------------------------------------------------------------
 if(c_limitBioSolidsCHA eq 1,
-  vm_prodSe.up(t,"CHA","pebiolc","sesobio","biotrmod") = 0.0634;
+  vm_prodSe.up(t,"CHA","pebiolc","sesobio","biotrmod")$(t.val ge 2025) = 0.0634;
 );
 
 
