@@ -173,7 +173,7 @@ if(c_addBOFDeltaCap eq 1,
 
 if(c_addSteelGovTargets eq 1,
   vm_cap.lo("2030","OAS","bof","1") = 0.120;
-  vm_outflowPrc.lo("2030","IND","bof","1") = 0.300;
+  vm_outflowPrc.lo("2030","IND","bof","unheated") = 0.300;
 );
 
 $endif.cm_subsec_model_steel
