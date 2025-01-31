@@ -437,6 +437,10 @@ $ifthen.minMaxSeFeSectorShareDev "%cm_seFeSectorShareDevMethod%" == "minMaxAvrgS
   v_NegPenSeFeSectorShare(ttot,all_regi,all_enty,all_enty,emi_sectors,all_emiMkt) "min-max negative penalty for secondary energy share deviation in sectors"
   v_PosPenSeFeSectorShare(ttot,all_regi,all_enty,all_enty,emi_sectors,all_emiMkt) "min-max positive penalty for secondary energy share deviation in sectors"
 $endif.minMaxSeFeSectorShareDev
+
+$ifthen.unlimitedCCSSteel %cm_unlimitedCCSSteel% == "on"
+  vm_co2CCS_noSteel(ttot,all_regi)                            "TODO: co2ccs without steel?"
+$endif.unlimitedCCSSteel
 ;
 
 ***----------------------------------------------------------------------------------------
@@ -574,6 +578,10 @@ $endif.minMaxSeFeSectorShareDev
 $ifthen.limitSolidsFossilRegi not %cm_limitSolidsFossilRegi% == "off"
   q_fossilSolidsLimitReg(ttot,all_regi,all_enty,all_enty,emi_sectors,all_emiMkt)  "limit solids fossil to be lower or equal to previous year values in each (sector x emiMkt) combination"
 $endif.limitSolidsFossilRegi
+
+$ifthen.unlimitedCCSSteel %cm_unlimitedCCSSteel% == "on"
+  q_co2CCS_noSteel(ttot,all_regi)                       "TODO"
+$endif.unlimitedCCSSteel
 ;
 ***----------------------------------------------------------------------------------------
 ***                                   SCALARS
