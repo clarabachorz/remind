@@ -1195,11 +1195,6 @@ parameter
   c_addSteelGovTargetsFossil = 0; !! def 0 = no government target as lower bound. 1 = set gov target as lower bound
 *'
 parameter
-  c_addSteelGovTargetsAllTech      "Activate or deactivate reaching steel government targets for 2030 (OAS and IND only) with any steel"
-;
-  c_addSteelGovTargetsAllTech = 0; !! def 0 = no government target as lower bound. 1 = set gov target as lower bound
-*'
-parameter
   c_limitBioSolidsCHA      "Limit solid biomass in China to 2EJ for all times"
 ;
   c_limitBioSolidsCHA = 0;  !! def 0 = no limit, 1 = 2EJ limit
@@ -1376,6 +1371,8 @@ $setGlobal cm_dispatchSetyDown  off   !! def = off  The amount that te producing
 *** defines maximum secondary steel share per region
 *** Share is faded in from cm_startyear or 2020 to the denoted level by region/year.
 *** Example: "2040.EUR 0.6" will cap the share of secondary steel production at 60 % in EUR from 2040 onwards
+$setGlobal cm_addSteelGovTargetsAllTech  off !! def = off
+*** Activate or deactivate reaching steel government targets for 2030 (OAS and IND only) with any steel route (primary or secondary)
 $setGlobal cm_dispatchSeelDown  off   !! def = off  The amount that te producing seel can dispatch less (in percent) (overrides cm_dispatchSetyDown for te producing seel)
 *' *   cm_NucRegiPol "enable European region specific nuclear phase-out and new capacitiy constraints"
 $setGlobal cm_NucRegiPol   on   !! def = on
