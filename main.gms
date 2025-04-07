@@ -1190,9 +1190,14 @@ parameter
   c_addBOFDeltaCap = 0; !! def 0 = no BOF capacity bounds. 1 = switch on capacity bounds
 *'
 parameter
-  c_addSteelGovTargets      "Activate or deactivate reaching steel government targets for 2030 (OAS and IND only)"
+  c_addSteelGovTargetsFossil      "Activate or deactivate reaching steel government targets for 2030 (OAS and IND only) only with BF-BOF"
 ;
-  c_addSteelGovTargets = 0; !! def 0 = no government target as lower bound. 1 = set gov target as lower bound
+  c_addSteelGovTargetsFossil = 0; !! def 0 = no government target as lower bound. 1 = set gov target as lower bound
+*'
+parameter
+  c_addSteelGovTargetsAllTech      "Activate or deactivate reaching steel government targets for 2030 (OAS and IND only) with any steel"
+;
+  c_addSteelGovTargetsAllTech = 0; !! def 0 = no government target as lower bound. 1 = set gov target as lower bound
 *'
 parameter
   c_limitBioSolidsCHA      "Limit solid biomass in China to 2EJ for all times"

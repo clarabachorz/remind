@@ -539,6 +539,25 @@ q37_emiCCPrc(t,regi,emiInd37)$(
       vm_outflowPrc(t,regi,teCCPrc,opmoCCPrc)
     )
 ;
-
+***------------------------------------------------------
+*' Steel production target India
+***------------------------------------------------------
+q37_steelGovTargetsIND(tePrc) ..
+    sum(tePrc2opmoPrc(tePrc,opmoPrc),
+      vm_outflowPrc("2030","IND",tePrc,opmoPrc)
+    )
+  =g=
+    0.300
+;
+***------------------------------------------------------
+*' Steel production target Other Asia
+***------------------------------------------------------
+q37_steelGovTargetsOAS(tePrc) ..
+    sum(teMat2rlf(tePrc,rlf),
+      vm_cap("2030","OAS",tePrc,rlf)
+    )
+  =g=
+    0.120
+;
 *' @stop
 *** EOF ./modules/37_industry/subsectors/equations.gms

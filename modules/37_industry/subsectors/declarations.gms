@@ -158,6 +158,10 @@ $endif.no_calibration
   q37_emiCCPrc(tall,all_regi,emiInd37)                                              "Captured emissions from CCS"
   q37_limitOutflowCCPrc(tall,all_regi,all_te)                                       "Carbon capture processes can only capture as much co2 as the base process emits"
   q37_costMat(tall,all_regi)                                                        "External material cost (non-energy)"
+$ifthen.steelTargets "%c_addSteelGovTargetsAllTech%" == "1"
+  q37_steelGovTargetsIND(all_te)                                                    "Add governement targets for India for 2030"
+  q37_steelGovTargetsOAS(all_te)                                                    "Add governement targets for Other asia for 2030"
+$endif.steelTargets
 ;
 
 *** EOF ./modules/37_industry/subsectors/declarations.gms
