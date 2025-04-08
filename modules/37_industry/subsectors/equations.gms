@@ -540,8 +540,7 @@ q37_emiCCPrc(t,regi,emiInd37)$(
     )
 ;
 ***------------------------------------------------------
-*' Steel production target India (used to sum tePrc2opmoPrc(tePrc,opmoPrc),)
-*' matFin(mat) is prsteeel, secsteel
+*' Steel production target India
 ***------------------------------------------------------
 q37_steelGovTargetsIND ..
     sum(matFin(mat),
@@ -553,14 +552,16 @@ q37_steelGovTargetsIND ..
     0.300
 ;
 ***------------------------------------------------------
-*' Steel production target Other Asia
+*' Steel production target Other Asia (120Mt capacity, so 96)
 ***------------------------------------------------------
 q37_steelGovTargetsOAS ..
-    sum(teMat2rlf(tePrc,"1"),
-      vm_cap("2030","OAS",tePrc,"1")
+    sum(matFin(mat),
+      sum(tePrc2matOut(tePrc,opmoPrc,mat),
+      vm_outflowPrc("2030","OAS",tePrc,opmoPrc)
+    )
     )
   =g=
-    0.120
+    0.096
 ;
 *' @stop
 *** EOF ./modules/37_industry/subsectors/equations.gms
