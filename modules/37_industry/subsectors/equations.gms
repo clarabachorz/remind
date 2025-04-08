@@ -540,10 +540,11 @@ q37_emiCCPrc(t,regi,emiInd37)$(
     )
 ;
 ***------------------------------------------------------
-*' Steel production target India
+*' Steel production target India (used to sumtePrc2opmoPrc(tePrc,opmoPrc),)
 ***------------------------------------------------------
 q37_steelGovTargetsIND ..
-    sum(tePrc2opmoPrc(tePrc,opmoPrc),
+    sum((route,
+        tePrc2route(tePrc,opmoPrc,route))
       vm_outflowPrc("2030","IND",tePrc,opmoPrc)
     )
   =g=
