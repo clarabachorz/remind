@@ -542,6 +542,7 @@ q37_emiCCPrc(t,regi,emiInd37)$(
 ***------------------------------------------------------
 *' Steel production target India
 ***------------------------------------------------------
+$ifthen.steelTargets "%cm_addSteelGovTargetsAllTech%" == "on"
 q37_steelGovTargetsIND ..
     sum(matFin(mat),
       sum(tePrc2matOut(tePrc,opmoPrc,mat),
@@ -563,5 +564,6 @@ q37_steelGovTargetsOAS ..
   =g=
     0.096
 ;
+$endIf.steelTargets
 *' @stop
 *** EOF ./modules/37_industry/subsectors/equations.gms
