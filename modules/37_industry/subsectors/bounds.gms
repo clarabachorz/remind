@@ -170,10 +170,10 @@ if(c_addBOFDeltaCap eq 1,
   vm_deltaCap.lo("2030","REF","bof","1") = 0.0001;
 );
 
-
+**** Steel targets reached with BF-BOF and available scrap EAF only.
 if(c_addSteelGovTargetsFossil eq 1,
-  vm_cap.lo("2030","OAS","bof","1") = 0.120;
-  vm_outflowPrc.lo("2030","IND","bof","unheated") = 0.300;
+  vm_cap.lo("2030","OAS","bof","1") = 0.120 - vm_cap("2030","OAS","eaf","1");
+  vm_outflowPrc.lo("2030","IND","bof","unheated") = 0.300 - vm_outflowPrc("2030","IND","eaf","sec");
 );
 
 $endif.cm_subsec_model_steel
