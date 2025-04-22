@@ -540,7 +540,7 @@ q37_emiCCPrc(t,regi,emiInd37)$(
     )
 ;
 ***------------------------------------------------------
-*' Steel production target India
+*' Steel production target India (300Mt capacity, so 240Mt production)
 ***------------------------------------------------------
 $ifthen.steelTargets "%cm_addSteelGovTargetsAllTech%" == "on"
 q37_steelGovTargetsIND ..
@@ -550,10 +550,10 @@ q37_steelGovTargetsIND ..
       )
       )
   =g=
-    0.300
+    0.240
 ;
 ***------------------------------------------------------
-*' Steel production target Other Asia (120Mt capacity, so 96)
+*' Steel production target Other Asia (120Mt capacity, so 96Mt production)
 ***------------------------------------------------------
 q37_steelGovTargetsOAS ..
     sum(matFin(mat),
