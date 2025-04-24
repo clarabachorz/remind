@@ -1919,12 +1919,6 @@ $setGlobal c_nonco2_macc_scenario  Default     !! def = Default
 *' *  (off): no, only infeasable regions are repeated, standard setting
 *' *  (on):  also non-optimal regions are solved again, up to cm_solver_try_max
 $setglobal cm_repeatNonOpt off      !! def = off  !! regexp = off|on
-*' cm_unlimitedCCSSteel   "unlimited CCS for steel ?"
-*'
-*' *  (off): no
-*' *  (on):  yes
-$setglobal cm_unlimitedCCSSteel off   !! def = off  !! regexp = off|on
-
 *' @stop
 
 *-------------------------------------------------------------------------------------
