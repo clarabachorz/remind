@@ -299,10 +299,10 @@ loop(t $ (t.val >= 2015 and t.val <= 2025),
     if(t.val <= 2020, !! TODO: activate 2025 upper-bound when consolidated data available
       vm_cap.up(t,regi,teVRE(te),"1") $ pm_histCap(t,regi,te) = 1.05 * pm_histCap(t,regi,te);
     );
-*** broader bounds for renewables with lower data quality
+*** broader bounds for renewables with lower data quality **Clara quick fix: make higher bound higher. Used to be 1.4
     loop(te $ (sameas(te, "hydro") or sameas(te, "geohdr")),
       vm_cap.lo(t,regi,te,"1") $ pm_histCap(t,regi,te) = 0.7 * pm_histCap(t,regi,te);
-      vm_cap.up(t,regi,te,"1") $ pm_histCap(t,regi,te) = 1.4 * pm_histCap(t,regi,te);
+      vm_cap.up(t,regi,te,"1") $ pm_histCap(t,regi,te) = 1.6 * pm_histCap(t,regi,te);
     );
 
 *** lower bound on capacities for ngcc and ngt and gaschp for regions defined at the pm_histCap file
