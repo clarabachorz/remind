@@ -508,7 +508,7 @@ q_emiAllMkt(ttot,all_regi,all_enty,all_emiMkt)       "total regional emissions f
 
 q_transCCS(ttot,all_regi,all_enty,all_enty,all_te,all_enty,all_enty,all_te,rlf)        "transformation equation for ccs"
 q_limitCapCCS(ttot,all_regi,all_enty,all_enty,all_te,rlf)                              "capacity constraint for ccs"
-* MOVED: q_limitCCS(all_regi,all_enty,all_enty,all_te,rlf)                                      "ccs constraint for sequestration alternatives"
+q_limitCCS(all_regi,all_enty,all_enty,all_te,rlf)                                      "ccs constraint for sequestration alternatives"
 
 q_emiCdrAll(ttot,all_regi)                           "summing over all CDR emissions"
 
