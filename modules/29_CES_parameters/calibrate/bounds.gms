@@ -55,8 +55,8 @@ loop (pf_industry_relaxed_bounds_dyn37(in),
     pm_cesdata(t-1,regi,in, "quantity"),
     ( pm_cesdata(t,regi,in,"quantity")
     !! goes from 1.05 to 2.05 in +0.2 steps, then jumps to inf
-    * (1.05 + max(0, (sm_CES_calibration_iteration - 1) / sm_tmp)))
-    )$( sm_CES_calibration_iteration le sm_tmp )
+    * (1.05 + max(0, (sm_CES_calibration_iteration - 1) / sm_tmp))
+    )$( sm_CES_calibration_iteration le sm_tmp ))
   + INF$( sm_CES_calibration_iteration gt sm_tmp );
 );
 
