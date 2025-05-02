@@ -141,5 +141,5 @@ test-validation: ## Run validation tests, requires a full set of runs in the out
 	@TESTTHAT_RUN_SLOW=TRUE Rscript -e 'testthat::test_dir("tests/testthat/validation")'	
 
 set-local-calibration:		## set up local calibration results directory
-	@./scripts/utils/set-local-calibration.sh
+	@bash ./scripts/utils/set-local-calibration.sh
 	$(info Local calibration has been set. Now use `collect_calibration` script in calibration_results/ directory )
