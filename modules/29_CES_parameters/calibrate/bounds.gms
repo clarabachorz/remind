@@ -37,7 +37,7 @@ if (smax((t,regi_dyn29(regi),ipf)$(    t.val gt 2005
 
   putclose logfile, " " /;
 );
-$offOrder
+
 *' relax industry fixing over the calibration iterations
 sm_tmp = 5;  !! last iteration with bounds on industry
 loop (pf_industry_relaxed_bounds_dyn37(in),
@@ -50,16 +50,24 @@ loop (pf_industry_relaxed_bounds_dyn37(in),
       abs(pm_cesdata(t,regi,in,"offset_quantity"))
     );
   
-  vm_cesIO.up(t,regi_dyn29(regi),in)$(t.val gt 2005)
-  = max(
-    pm_cesdata(t-1,regi,in, "quantity"),
-    ( pm_cesdata(t,regi,in,"quantity")
+  vm_cesIO.up(t,regi_dyn29(regi),in)
+  = ( pm_cesdata(t,regi,in,"quantity")
     !! goes from 1.05 to 2.05 in +0.2 steps, then jumps to inf
     * (1.05 + max(0, (sm_CES_calibration_iteration - 1) / sm_tmp))
-    ))$( sm_CES_calibration_iteration le sm_tmp )
+    )$( sm_CES_calibration_iteration le sm_tmp )
   + INF$( sm_CES_calibration_iteration gt sm_tmp );
 
 );
+
+$offOrder
+vm_cesIO.up(t,regi,"ue_steel_primary")$(t.val gt 2005)
+= max(
+  pm_cesdata(t-1,regi,"ue_steel_primary","quantity"),
+  (pm_cesdata(t,regi,"ue_steel_primary","quantity")
+  *(1.05 + max(0, (sm_CES_calibration_iteration - 1) / sm_tmp))
+    ))$( sm_CES_calibration_iteration le sm_tmp )
+  + INF$( sm_CES_calibration_iteration gt sm_tmp 
+  );
 $onOrder
 
 loop(p29_building_relaxed_bounds_dyn(in),
