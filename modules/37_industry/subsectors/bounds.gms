@@ -152,22 +152,11 @@ if (cm_CCS_steel ne 1 OR cm_IndCCSscen ne 1,
 v37_shareWithCC.lo(t,regi,tePrc,opmoPrc) = 0.;
 v37_shareWithCC.up(t,regi,tePrc,opmoPrc) = 1.;
 
-!! Add new capacity announcement constraints from the global steel plant tracker
-!! If not written out explicitely, the capacity additions are 0
+!! Add new capacity under construction constraints from the global steel plant tracker
 if(c_addBOFDeltaCap eq 1,
-  vm_deltaCap.lo("2025","CHA","bof","1") = 0.0184;
-  vm_deltaCap.lo("2030","CHA","bof","1") = 0.0058;
-  vm_deltaCap.lo("2035","CHA","bof","1") = 0.;
-
-  vm_deltaCap.lo("2025","IND","bof","1") = 0.0084;
-  vm_deltaCap.lo("2030","IND","bof","1") = 0.0249;
-  vm_deltaCap.lo("2035","IND","bof","1") = 0.0054;
-
-  vm_deltaCap.lo("2025","OAS","bof","1") = 0.0093;
+  vm_deltaCap.lo("2030","CHA","bof","1") = 0.00216;
+  vm_deltaCap.lo("2030","IND","bof","1") = 0.0008;
   vm_deltaCap.lo("2030","OAS","bof","1") = 0.002;
-  vm_deltaCap.lo("2035","OAS","bof","1") = 0.;
-
-  vm_deltaCap.lo("2030","REF","bof","1") = 0.0001;
 );
 
 **** Steel targets reached with BF-BOF and available scrap EAF only.

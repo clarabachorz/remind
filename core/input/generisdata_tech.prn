@@ -160,7 +160,7 @@ $ifthen.cm_subsec_model_steel "%cm_subsec_model_steel%" == "processes"
 *** industry processes
 +                     bf         bof         idr         eaf
 tech_stat
-inco0              400.0       200.0       350.0       350.0
+inco0              400.0       200.0       420.0       350.0
 omf                 0.06        0.06        0.06        0.06
 lifetime              20          20          20          20
 
