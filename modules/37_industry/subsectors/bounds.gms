@@ -154,6 +154,16 @@ v37_shareWithCC.up(t,regi,tePrc,opmoPrc) = 1.;
 
 !! Add new capacity under construction constraints from the global steel plant tracker
 if(c_addBOFDeltaCap eq 1,
+  vm_deltaCap.lo("2030","CHA","bof","1") = 0.0039;
+
+  vm_deltaCap.lo("2030","IND","bof","1") = 0.0184;
+  vm_deltaCap.lo("2035","IND","bof","1") = 0.0009;
+  
+  vm_deltaCap.lo("2030","OAS","bof","1") = 0.0004;
+  vm_deltaCap.lo("2035","OAS","bof","1") = 0.0014;
+);
+
+if(c_addBOFDeltaCap_constr_only eq 1,
   vm_deltaCap.lo("2030","CHA","bof","1") = 0.00216;
   vm_deltaCap.lo("2030","IND","bof","1") = 0.0008;
   vm_deltaCap.lo("2030","OAS","bof","1") = 0.002;

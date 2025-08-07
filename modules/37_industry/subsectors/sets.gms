@@ -498,6 +498,17 @@ $ifthen.cm_subsec_model_steel "%cm_subsec_model_steel%" == "processes"
 $endif.cm_subsec_model_steel
   /
 
+tePrc2matOutHist(tePrc,opmoPrc,mat)   "Mapping of historical industry process technologies onto their output materials"
+  /
+$ifthen.cm_subsec_model_steel "%cm_subsec_model_steel%" == "processes"
+   bf  . standard . pigiron
+   bof . unheated . prsteel
+   idr . ng . driron
+   eaf . pri . prsteel
+   eaf . sec . sesteel
+$endif.cm_subsec_model_steel
+  /
+
 tePrc2ue(tePrc,opmoPrc,all_in)   "Mapping of industry process technologies to the UE ces nodes they directly or indirectly feed into"
   /
 $ifthen.cm_subsec_model_steel "%cm_subsec_model_steel%" == "processes"

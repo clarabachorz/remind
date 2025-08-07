@@ -712,20 +712,25 @@ loop(ppfUePrc(in),
 );
 
 *** --------------------------------
-p37_teMatShareHist(tePrc,opmoPrc,mat) = 0.;
+p37_teMatShareHist(regi,tePrc,opmoPrc,mat) = 0.;
 $ifthen.cm_subsec_model_steel "%cm_subsec_model_steel%" == "processes"
-p37_teMatShareHist("bof","unheated","prsteel") = 1.;
-p37_teMatShareHist("eaf","sec","sesteel") = 1.;
+p37_teMatShareHist(regi,"bof","unheated","prsteel") = 1.;
+p37_teMatShareHist(regi,"eaf","sec","sesteel") = 1.;
+!! in MEA, pr steel is mostly dri
+p37_teMatShareHist("MEA","bof","unheated","prsteel") = 0.05;
+p37_teMatShareHist("MEA","eaf","pri","prsteel") = 0.95;
 $endif.cm_subsec_model_steel
-loop(matFin(mat),
-  if(abs(sum((tePrc,opmoPrc),p37_teMatShareHist(tePrc,opmoPrc,mat))-1.) gt sm_eps,
+loop((matFin(mat),regi),
+  if(abs(sum((tePrc,opmoPrc),p37_teMatShareHist(regi,tePrc,opmoPrc,mat))-1.) gt sm_eps,
     display p37_teMatShareHist;
     abort "p37_teMatShareHist must add to one for each matFin";
   );
 );
-if(sum((tePrc,opmoPrc,mat)$(not matFin(mat)), p37_teMatShareHist(tePrc,opmoPrc,mat)) gt sm_eps,
-  display p37_teMatShareHist;
-  abort "p37_teMatShareHist must only be non-zero for matFin";
+loop(regi,
+  if(sum((tePrc,opmoPrc,mat)$(not matFin(mat)), p37_teMatShareHist(regi,tePrc,opmoPrc,mat)) gt sm_eps,
+    display p37_teMatShareHist;
+    abort "p37_teMatShareHist must only be non-zero for matFin";
+  );
 );
 *** --------------------------------
 s37_shareHistFeDemPenalty = 0.6;
@@ -765,8 +770,8 @@ if (cm_startyear eq 2005,
     !! 2nd stage tech
     loop(mat2ue(mat,in),
       p37_matFlowHist(ttot,regi,mat) = pm_fedemand(ttot,regi,in) / p37_mat2ue(mat,in) * p37_ue_share(mat,in);
-      loop(tePrc2matOut(tePrc,opmoPrc,mat),
-        pm_outflowPrcHist(ttot,regi,tePrc,opmoPrc) = p37_matFlowHist(ttot,regi,mat) * p37_teMatShareHist(tePrc,opmoPrc,mat);
+      loop(tePrc2matOutHist(tePrc,opmoPrc,mat),
+        pm_outflowPrcHist(ttot,regi,tePrc,opmoPrc) = p37_matFlowHist(ttot,regi,mat) * p37_teMatShareHist(regi,tePrc,opmoPrc,mat);
       );
     );
 
@@ -774,9 +779,9 @@ if (cm_startyear eq 2005,
     !! TODO: simply do this loop several times to fill more than two stages?
     loop((tePrc1,opmoPrc1,mat)$(
                     sum((tePrc2,opmoPrc2), tePrc2matIn(tePrc2,opmoPrc2,mat))
-                AND tePrc2matOut(tePrc1,opmoPrc1,mat)),
+                AND tePrc2matOutHist(tePrc1,opmoPrc1,mat)),
       p37_matFlowHist(ttot,regi,mat)
-        = sum((tePrc2matOut(tePrc1,opmoPrc1,mat),
+        = sum((tePrc2matOutHist(tePrc1,opmoPrc1,mat),
                tePrc2matIn(tePrc2,opmoPrc2,mat)),
             !!TODO: enable p37_teMatShareHist here, too (has to be defined, though)
             p37_specMatDem(mat,tePrc2,opmoPrc2) * pm_outflowPrcHist(ttot,regi,tePrc2,opmoPrc2) );

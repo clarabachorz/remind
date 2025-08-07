@@ -1185,9 +1185,19 @@ parameter
   cm_LearningSpillover = 1; !! def 1 = Learningspillover activated (set to 0 to deactivate)
 *'
 parameter
-  c_addBOFDeltaCap      "Activate or deactivate BOF capacity bounds from 2020"
+  c_addBOFDeltaCap      "Activate or deactivate BOF capacity bounds from 2020 (project under construction + announced)"
 ;
   c_addBOFDeltaCap = 0; !! def 0 = no BOF capacity bounds. 1 = switch on capacity bounds
+*'
+parameter
+  c_addBOFDeltaCap_constr_only      "Activate or deactivate BOF capacity bounds from 2020, use only project under construction"
+;
+  c_addBOFDeltaCap_constr_only = 0; !! def 0 = no BOF capacity bounds. 1 = switch on capacity bounds
+*'
+parameter
+  c_changeBFBOF_params      "Scale up inco0 and lifetime for bfbof in IND and SSA"
+;
+  c_changeBFBOF_params = 0; !! def 0 = no change   1 = scale up
 *'
 parameter
   c_addSteelGovTargetsFossil      "Activate or deactivate reaching steel government targets for 2030 (OAS and IND only) only with BF-BOF"
