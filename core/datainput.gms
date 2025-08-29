@@ -461,11 +461,19 @@ if(c_changeBFBOF_params eq 1,
   pm_inco0_t(ttot,"IND","bof") = pm_inco0_t(ttot,"IND","bof") * 1.15;
   pm_inco0_t(ttot,"SSA","bf") = pm_inco0_t(ttot,"SSA","bf") * 1.15;
   pm_inco0_t(ttot,"SSA","bof") = pm_inco0_t(ttot,"SSA","bof") * 1.15;
+  pm_inco0_t(ttot,"OAS","bf") = pm_inco0_t(ttot,"OAS","bf") * 1.15;
+  pm_inco0_t(ttot,"OAS","bof") = pm_inco0_t(ttot,"OAS","bof") * 1.15;
+  pm_inco0_t(ttot,"LAM","bf") = pm_inco0_t(ttot,"LAM","bf") * 1.15;
+  pm_inco0_t(ttot,"LAM","bof") = pm_inco0_t(ttot,"LAM","bof") * 1.15;
 
   pm_data("IND","lifetime","bf") = 35;
   pm_data("IND","lifetime","bof") = 35;
   pm_data("SSA","lifetime","bf") = 35;
   pm_data("SSA","lifetime","bof") = 35;
+  pm_data("OAS","lifetime","bf") = 35;
+  pm_data("OAS","lifetime","bof") = 35;
+  pm_data("LAM","lifetime","bf") = 35;
+  pm_data("LAM","lifetime","bof") = 35;
 );
 
 *** regional differentiation and convergence of non-learning technologies costs

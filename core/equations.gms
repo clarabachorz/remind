@@ -1187,16 +1187,32 @@ q_limitCapFeH2BI(t,regi,sector)$(SAMEAS(sector,"build") OR SAMEAS(sector,"indst"
 *' Enforce historical data biomass share per carrier in sector final energy for transport, buildings and industry (+- 2%)
 ***---------------------------------------------------------------------------
 
-q_shbiofe_up(t,regi,entyFe,sector,emiMkt)$(pm_secBioShare(t,regi,entyFe,sector) and sector2emiMkt(sector,emiMkt))..
-  (pm_secBioShare(t,regi,entyFe,sector) + 0.02)
+q_shbiofe_up(t,regi,entyFe,sector,emiMkt)$(pm_secBioShare(t,regi,entyFe,sector,emiMkt) and sector2emiMkt(sector,emiMkt) and (not sameas(entyFe,"fesos")) and (not sameas(sector,"indst")))..
+  (pm_secBioShare(t,regi,entyFe,sector,emiMkt) + 0.02)
   *
   sum((entySe,te)$se2fe(entySe,entyFe,te), vm_demFeSector_afterTax(t,regi,entySe,entyFe,sector,emiMkt))
   =g=
   sum((entySeBio,te)$se2fe(entySeBio,entyFe,te), vm_demFeSector_afterTax(t,regi,entySeBio,entyFe,sector,emiMkt))
 ;
 
-q_shbiofe_lo(t,regi,entyFe,sector,emiMkt)$(pm_secBioShare(t,regi,entyFe,sector) and sector2emiMkt(sector,emiMkt))..
-  (pm_secBioShare(t,regi,entyFe,sector) - 0.02)
+q_shbiofe_lo(t,regi,entyFe,sector,emiMkt)$(pm_secBioShare(t,regi,entyFe,sector,emiMkt) and sector2emiMkt(sector,emiMkt) and (not sameas(entyFe,"fesos")) and (not sameas(sector,"indst")))..
+  (pm_secBioShare(t,regi,entyFe,sector,emiMkt) - 0.02)
+  *
+  sum((entySe,te)$se2fe(entySe,entyFe,te), vm_demFeSector_afterTax(t,regi,entySe,entyFe,sector,emiMkt))
+  =l=
+  sum((entySeBio,te)$se2fe(entySeBio,entyFe,te), vm_demFeSector_afterTax(t,regi,entySeBio,entyFe,sector,emiMkt))
+;
+
+q_shbiofe_up_fesos(t,regi,entyFe,sector,emiMkt)$(pm_secBioShare(t,regi,entyFe,sector,emiMkt) and sector2emiMkt(sector,emiMkt) and (sameas(entyFe,"fesos")) and (sameas(sector,"indst")) and (sameas(emiMkt,"ETS")))..
+  (pm_secBioShare(t,regi,entyFe,sector,emiMkt) + 0.1)
+  *
+  sum((entySe,te)$se2fe(entySe,entyFe,te), vm_demFeSector_afterTax(t,regi,entySe,entyFe,sector,emiMkt))
+  =g=
+  sum((entySeBio,te)$se2fe(entySeBio,entyFe,te), vm_demFeSector_afterTax(t,regi,entySeBio,entyFe,sector,emiMkt))
+;
+
+q_shbiofe_lo_fesos(t,regi,entyFe,sector,emiMkt)$(pm_secBioShare(t,regi,entyFe,sector,emiMkt) and sector2emiMkt(sector,emiMkt) and (sameas(entyFe,"fesos")) and (sameas(sector,"indst")) and (sameas(emiMkt,"ETS")))..
+  (pm_secBioShare(t,regi,entyFe,sector,emiMkt) - 0.1)
   *
   sum((entySe,te)$se2fe(entySe,entyFe,te), vm_demFeSector_afterTax(t,regi,entySe,entyFe,sector,emiMkt))
   =l=

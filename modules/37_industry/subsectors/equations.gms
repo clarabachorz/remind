@@ -565,5 +565,16 @@ q37_steelGovTargetsOAS ..
     0.096
 ;
 $endIf.steelTargets
+
+***------------------------------------------------------
+*' Limit biosolids in industry (only for ETS)
+***------------------------------------------------------
+q37_limitBioSolidsIndst(t,regi,entyFe)$((t.val ge 2025) AND sameas(entyFe,"fesos"))..
+  v37_shSolidsIndst(t,regi)
+  *
+  sum((entySe,te)$se2fe(entySe,entyFe,te), vm_demFeSector_afterTax(t,regi,entySe,entyFe,"indst","ETS"))
+  =g=
+  sum((entySeBio,te)$se2fe(entySeBio,entyFe,te), vm_demFeSector_afterTax(t,regi,entySeBio,entyFe,"indst","ETS"))
+;
 *' @stop
 *** EOF ./modules/37_industry/subsectors/equations.gms

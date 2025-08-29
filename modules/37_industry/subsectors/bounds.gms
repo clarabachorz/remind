@@ -120,7 +120,7 @@ vm_cesIO.lo(t,regi_dyn29(regi),in_industry_dyn37(in))$(
 *' carbon prices due to missing adjustment costs.
 if (cm_startyear gt 2005,   !! not a baseline or NPi scenario
   vm_demFeSector_afterTax.up(t,regi,"sesobio","fesos","indst","ETS")
-  = max(0.25 , smax(t2, pm_secBioShare(t2,regi,"fesos","indst") ) )
+  = max(0.25 , smax(t2, pm_secBioShare(t2,regi,"fesos","indst","ETS") ) )
     * p37_BAU_industry_ETS_solids(t,regi);
 );
 
@@ -184,6 +184,8 @@ loop ((ue_industry_dyn37(in),regi_groupExt(regi_fxDem37(ext_regi),regi)),
   = p37_cesIO_baseline(t,regi,in);
 );
 $endif.fixedUE_scenario
+
+v37_shSolidsIndst.fx(t,regi) = 0.25 ;
 
 !! Fix to avoid reoccurring random infeasibilities. May need to be excluded if e.g. synfuels (or something else) are set to zero.
 vm_demFeSector_afterTax.lo(t,regi,entySe,"fesos","indst",emiMkt)$(NOT sameAs(emiMkt, "other")) = 1e-16;

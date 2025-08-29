@@ -125,7 +125,7 @@ p_lifetime_max(all_regi,all_te)                             "maximum lifetime of
 pm_pedem_res(ttot,all_regi,all_te)                          "Demand for pebiolc residues, needed for enhancement of residue potential [TWa]"
 p_ef_dem(all_regi,all_enty)                                 "Demand side emission factor of final energy carriers [MtCO2/EJ]"
 
-pm_secBioShare(ttot,all_regi,all_enty,emi_sectors)           "share of biomass per carrier for each sector"
+pm_secBioShare(ttot,all_regi,all_enty,emi_sectors,all_emiMkt)           "share of biomass per carrier for each sector"
 
 p_avCapFac2015(all_regi,all_te)                             "average capacity factor of non-bio renewables in 2015 in REMIND"
 p_aux_capToDistr(all_regi,all_te)                           "auxiliary parameter to calculate p_avCapFac2015; The historic capacity in 2015"
@@ -555,6 +555,8 @@ q_shGasLiq_fe(ttot,all_regi,emi_sectors)              "share of gases and liquid
 
 q_shbiofe_up(ttot,all_regi,all_enty,emi_sectors,all_emiMkt) "share of biomass per carrier in sector final energy (upper bound)"
 q_shbiofe_lo(ttot,all_regi,all_enty,emi_sectors,all_emiMkt) "share of biomass per carrier in sector final energy (lower bound)"
+q_shbiofe_up_fesos(ttot,all_regi,all_enty,emi_sectors,all_emiMkt)  "share of biomass for fesos indst (upper bound)"
+q_shbiofe_lo_fesos(ttot,all_regi,all_enty,emi_sectors,all_emiMkt)  "share of biomass for fesos indst (lower bound)"
 
 q_capH2BI(ttot,all_regi)                                  "H2 infrastructure capacities of buildings and industry need to add up to the total infrastructure of the stationary sector"
 q_limitCapFeH2BI(ttot,all_regi,emi_sectors)               "capacity limit equation for H2 infrastructure capacities of buildings and industry"

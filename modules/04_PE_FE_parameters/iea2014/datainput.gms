@@ -173,11 +173,16 @@ f04_IO_output(tall,regi,all_enty,all_enty2,all_te) = f04_IO_output(tall,regi,all
 pm_IO_output(tall,regi,all_enty,all_enty2,all_te) = f04_IO_output(tall,regi,all_enty,all_enty2,all_te);
 
 *** calculate bio share per fe carrier (only for historically available years)
-pm_secBioShare(ttot,regi,entyFe,sector)$((seAgg2fe("all_seso",entyFe) OR seAgg2fe("all_seliq",entyFe) OR seAgg2fe("all_sega",entyFe)) AND entyFe2Sector(entyFe,sector) and (ttot.val ge 2005 and ttot.val le 2020) and (sum((entySe,all_enty,all_te)$entyFeSec2entyFeDetail(entyFe,sector,all_enty), f04_IO_output(ttot,regi,entySe,all_enty,all_te) ) gt 0)) = 
+pm_secBioShare(ttot,regi,entyFe,sector,emiMkt)$((seAgg2fe("all_seso",entyFe) OR seAgg2fe("all_seliq",entyFe) OR seAgg2fe("all_sega",entyFe)) AND entyFe2Sector(entyFe,sector) and (ttot.val ge 2005 and ttot.val le 2020) and (sum((entySe,all_enty,all_te)$entyFeSec2entyFeDetail(entyFe,sector,all_enty), f04_IO_output(ttot,regi,entySe,all_enty,all_te) ) gt 0)) = 
   sum((entySeBio,all_enty,all_te)$entyFeSec2entyFeDetail(entyFe,sector,all_enty), f04_IO_output(ttot,regi,entySeBio,all_enty,all_te) ) 
   /
   sum((entySe,all_enty,all_te)$entyFeSec2entyFeDetail(entyFe,sector,all_enty), f04_IO_output(ttot,regi,entySe,all_enty,all_te) )
 ;
+
+*** for solids in industry in ETS only: biomass fraction cannot be higher than 0.25 
+*** in ES, almost all solids should be biomass.
+pm_secBioShare(ttot,regi,"fesos","indst","ES") = 0.9;
+pm_secBioShare(ttot,regi,"fesos","indst","ETS") = min(0.25,pm_secBioShare(ttot,regi,"fesos","indst","ETS"));
 
 display pm_secBioShare;
 
