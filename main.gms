@@ -1208,7 +1208,17 @@ parameter
   c_limitBioSolidsCHA      "Limit solid biomass in China to 2EJ for all times"
 ;
   c_limitBioSolidsCHA = 0;  !! def 0 = no limit, 1 = 2EJ limit
-*'  
+*'
+parameter
+  c_increaseBFCCCapture      "Increases BFCC capture rate to 80pc"
+;
+  c_increaseBFCCCapture = 0;  !! def 0 = normal, 1 = increase
+*'
+parameter
+  c_increaseDRICCEfficiency      "Decreases DRI CC SEC, to match ULCORED (BAT)"
+;
+  c_increaseDRICCEfficiency = 0;  !! def 0 = normal, 1 = increase efficiency
+*'
 *' * if Learningspillover is deactivated, foreign capacity is set to the level of 2020 in technology learning.
 *' * This means that in the model, each region's learning depends on its OWN additional capacity investment after 2020 in comparison to the GLOBAL cumulative capacity until 2020,
 *' * so for small regions learning is very slow. This is a very pessimistic interpretation of 'no learning spillovers',

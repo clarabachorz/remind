@@ -687,6 +687,11 @@ p37_specFeDemTarget("fegas","bfcc","standard")    = 0.92 * sm_c_2_co2 / (sm_TWa_
 !! IEA Steel Roadmap Fig 2.11 also shows very little additional fuel cost
 p37_specFeDemTarget("feels","idrcc","ng")         = 0.11 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! Copy from bfcc
 p37_specFeDemTarget("fegas","idrcc","ng")         = 0.92 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! Copy from bfcc, but seems to be quite universal. See e.g. Rochelle 2016, who has slightly lower values.
+if(c_increaseDRICCEfficiency eq 1,
+  p37_specFeDemTarget("feels","idrcc","ng")         = 0.278 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! ULCORED values (1GJ/tCO2)
+  p37_specFeDemTarget("fegas","idrcc","ng")         = 0.001 * sm_c_2_co2 / (sm_TWa_2_MWh/sm_giga_2_non);    !! ULCORED values
+);
+
 $endif.cm_subsec_model_steel
 
 *** --------------------------------
@@ -741,6 +746,9 @@ p37_selfCaptureRate(all_te) = 0.;
 $ifthen.cm_subsec_model_steel "%cm_subsec_model_steel%" == "processes"
 p37_captureRate("bfcc")  = 0.73; !! Source: Witecka 2023, Figure 18
 p37_captureRate("idrcc") = 0.85; !! Source: IEA Steel Roadmap Fig. 2.11
+if(c_increaseBFCCCapture eq 1,
+  p37_captureRate("bfcc")  = 0.85; !! very optimistic capture rate for BFCC
+);
 p37_selfCaptureRate("bfcc")  = 0.9;
 p37_selfCaptureRate("idrcc") = 0.9;
 $endif.cm_subsec_model_steel
