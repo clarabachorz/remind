@@ -476,6 +476,26 @@ if(c_changeBFBOF_params eq 1,
   pm_data("LAM","lifetime","bof") = 35;
 );
 
+if(c_changeBFBOF_params_40yr eq 1,
+  pm_inco0_t(ttot,"IND","bf") = pm_inco0_t(ttot,"IND","bf") * 1.15;
+  pm_inco0_t(ttot,"IND","bof") = pm_inco0_t(ttot,"IND","bof") * 1.15;
+  pm_inco0_t(ttot,"SSA","bf") = pm_inco0_t(ttot,"SSA","bf") * 1.15;
+  pm_inco0_t(ttot,"SSA","bof") = pm_inco0_t(ttot,"SSA","bof") * 1.15;
+  pm_inco0_t(ttot,"OAS","bf") = pm_inco0_t(ttot,"OAS","bf") * 1.15;
+  pm_inco0_t(ttot,"OAS","bof") = pm_inco0_t(ttot,"OAS","bof") * 1.15;
+  pm_inco0_t(ttot,"LAM","bf") = pm_inco0_t(ttot,"LAM","bf") * 1.15;
+  pm_inco0_t(ttot,"LAM","bof") = pm_inco0_t(ttot,"LAM","bof") * 1.15;
+
+  pm_data("IND","lifetime","bf") = 40;
+  pm_data("IND","lifetime","bof") = 40;
+  pm_data("SSA","lifetime","bf") = 40;
+  pm_data("SSA","lifetime","bof") = 40;
+  pm_data("OAS","lifetime","bf") = 40;
+  pm_data("OAS","lifetime","bof") = 40;
+  pm_data("LAM","lifetime","bf") = 40;
+  pm_data("LAM","lifetime","bof") = 40;
+);
+
 *** regional differentiation and convergence of non-learning technologies costs
 $ifthen.REG2040_techcosts "%cm_techcosts%" == "REG2040"   !! cm_techcosts REG2040
 *** for 2015-2040, use differentiated costs when available for a specific non-learning technology

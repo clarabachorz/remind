@@ -1200,6 +1200,11 @@ parameter
   c_changeBFBOF_params = 0; !! def 0 = no change   1 = scale up
 *'
 parameter
+  c_changeBFBOF_params_40yr      "Scale up inco0 and lifetime for bfbof in IND and SSA (40yr)"
+;
+  c_changeBFBOF_params_40yr = 0; !! def 0 = no change   1 = scale up
+*'
+parameter
   c_addSteelGovTargetsFossil      "Activate or deactivate reaching steel government targets for 2030 (OAS and IND only) only with BF-BOF"
 ;
   c_addSteelGovTargetsFossil = 0; !! def 0 = no government target as lower bound. 1 = set gov target as lower bound
